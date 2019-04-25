@@ -1,7 +1,7 @@
 # Ishii_Wohl_DeSouza_Asahina_2019
 > Analysis package for the paper Ishii*, Wohl*, DeSouza, Asahina (2019) *co first authors
 
-These codes were written and used to organize and analyze behavior experiments captured with BIAS software, tracked with FlyTracker, and scored with behavior classifiers generated in house using JAABA software.
+These codes were written and used to organize and analyze behavior experiments captured with BIAS: Basic Image Acquisition Software (Branson and Reiser labs, Janelia), tracked with FlyTracker (Eyjolfsdottir et al., 2014), and scored with behavior classifiers generated in house using JAABA software (Kabra et al, 2013).
 
 
 ## Software
