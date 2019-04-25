@@ -1,11 +1,13 @@
 function [scoresgalore,info] = makeScoreStruct(expfolder,infofile)
-%Organizes JAABA scores files for each movie folder 
-%   Ususally called by OrgData function 
+% Organizes JAABA scores files for each movie folder 
+%   Ususally called by organizeBehavData.m  
 
-%INPUTS: exfolder - path to experimental folder, infofile- name of excel
-%file that contains per-fly metadata
+% INPUTS: exfolder - path to experimental folder
+%         infofile- name of excel file that contains per-fly metadata
 
-%OUTPUTS: scoresgalore - 
+% OUTPUTS: scoresgalore - structure containing scores data for each movie 
+%                         specified by infofile
+%          info - infofile converted into a matlab table
 
 cd(expfolder)
 
