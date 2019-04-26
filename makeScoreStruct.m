@@ -9,7 +9,6 @@ function [scoresgalore,info] = makeScoreStruct(expfolder,infofile)
 %                         specified by infofile
 %          info - infofile converted into a matlab table
 
-cd(expfolder)
 
 % Extract experiment info and determine slash direction (PC vs Mac)
 if ~isempty(strfind(expfolder, '/'))
