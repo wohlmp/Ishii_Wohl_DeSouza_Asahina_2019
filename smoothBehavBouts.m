@@ -12,9 +12,9 @@ function B = smoothBehavBouts(allScores,frameshift,max_gap,min_bout)
 
 % For behaviors that didn't need to go through thresholding (don't have
 % thresholded behavior data), pull from original JAABA output
-if ~isfield(allScores,'startth')
-    allScores.startth = allScores.t0s;
-    allScores.endth = allScores.t1s;
+if ~isfield(allScores,'startNT')
+    allScores.startNT = allScores.t0s;
+    allScores.endNT = allScores.t1s;
 end
 
 % Obtain the number of flies in a given movie
@@ -23,29 +23,29 @@ frames = length(allScores.postprocessed{1});
 for p = 1:flies_n;
     
     % Apply frame shift specified in info file if run from OrgData or manually entered
-    startth = allScores.startth{p} + frameshift;
-    endtth = allScores.endth{p} + frameshift;
+    startNT = allScores.startNT{p} + frameshift;
+    endNT = allScores.endNT{p} + frameshift;
     
     % Remove a behavior bout when it occurs at the very beginning or end of
     % a movie
-    if ~(length(startth) == length(endtth))
+    if ~(length(startNT) == length(endNT))
         disp('start and end frames do not have equal elements')
-        if length(startth) > length(endtth)
-            startth = startth(1:length(endtth));
+        if length(startNT) > length(endNT)
+            startNT = startNT(1:length(endNT));
         else
-            endtth = endtth(1:length(startth));
+            endNT = endNT(1:length(startNT));
         end
     end
     
     % Merge bouts with a gap less than or equal to max_gap
-    isi = startth(2:end)- endtth(1:(end-1)); %Gap between neighboring bouts
-    startth((find(isi <= max_gap) + 1)) = [];
-    endtth(find(isi <= max_gap)) = [];
+    isi = startNT(2:end)- endNT(1:(end-1)); %Gap between neighboring bouts
+    startNT((find(isi <= max_gap) + 1)) = [];
+    endNT(find(isi <= max_gap)) = [];
     
     % Remove bouts that are less than or equal to min_bout
-    boutlength = endtth - startth;
-    startsm = startth(find(boutlength >= min_bout));
-    endsm = endtth(find(boutlength >= min_bout));
+    boutlength = endNT - startNT;
+    startsm = startNT(find(boutlength >= min_bout));
+    endsm = endNT(find(boutlength >= min_bout));
     
     % Remove of bouts that may be have been shifted to before or after
     % the start or end of the movie
